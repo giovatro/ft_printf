@@ -6,7 +6,7 @@
 /*   By: gtroiano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 17:42:41 by gtroiano          #+#    #+#             */
-/*   Updated: 2023/08/13 18:36:09 by gtroiano         ###   ########.fr       */
+/*   Updated: 2023/08/13 19:18:29 by gtroiano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 
 int		ft_printf(const char *format, ...);
-int		ft_putchar(char c, int len);
-int		ft_putstr(char *s, int len);
-int		ft_putnbr(int n, int len);
+void	ft_putchar(char c, int *len);
+void	ft_putstr(char *s, int *len);
+void	ft_putnbr(int n, int *len);
 
 #endif

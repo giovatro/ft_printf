@@ -6,26 +6,24 @@
 /*   By: gtroiano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:22:04 by gtroiano          #+#    #+#             */
-/*   Updated: 2023/08/13 19:04:45 by gtroiano         ###   ########.fr       */
+/*   Updated: 2023/08/13 19:28:03 by gtroiano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n, int len)
+void	ft_putnbr(int n, int *len)
 {
-	if (n < 0)
+	if (n == -2147483648)
 	{
-		if (n == -2147483648)
-		{
-			write(1, "-2147483648", 11);
-			len += 11;
-		}
-		else
-		{
-			ft_putchar(45, len);
-			n = -n;
-		}
+		write(1, "-2147483648", 11);
+		(*len) += 11;
+		return ;
+	}
+	else if (n < 0)
+	{
+		ft_putchar(45, len);
+		ft_putnbr(-n, len);
 	}
 	else
 	{
@@ -33,5 +31,4 @@ int	ft_putnbr(int n, int len)
 			ft_putnbr(n / 10, len);
 		ft_putchar((n % 10) + 48, len);
 	}
-	return (len);
 }

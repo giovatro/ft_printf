@@ -6,23 +6,22 @@
 /*   By: gtroiano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:30:48 by gtroiano          #+#    #+#             */
-/*   Updated: 2023/08/13 18:21:51 by gtroiano         ###   ########.fr       */
+/*   Updated: 2023/08/13 19:19:41 by gtroiano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h" 
 
-static int	ft_eval_format(va_list ap, char s, int len)
+static void	ft_eval_format(va_list ap, char s, int *len)
 {
 	if (s == 'c')
-		len = ft_putchar(va_arg(ap, int), len);
+		ft_putchar(va_arg(ap, int), len);
 	else if (s == 's')
-		len = ft_putstr(va_arg(ap, char *), len);
+		ft_putstr(va_arg(ap, char *), len);
 	else if (s == 'i' || s == 'd')
-		len = ft_putnbr(va_arg(ap, int), len);
+		ft_putnbr(va_arg(ap, int), len);
 	else if (s == '%')
-		len = ft_putchar(s, len);
-	return (len);
+		ft_putchar(s, len);
 }
 
 int	ft_printf(const char *format, ...)
@@ -39,9 +38,9 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			len = ft_eval_format(ap, format[++i], len);
+			ft_eval_format(ap, format[++i], &len);
 		else
-			len = ft_putchar(format[i], len);
+			ft_putchar(format[i], &len);
 		i++;
 	}
 	va_end(ap);
