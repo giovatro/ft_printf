@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtroiano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 17:42:41 by gtroiano          #+#    #+#             */
-/*   Updated: 2023/08/13 18:36:09 by gtroiano         ###   ########.fr       */
+/*   Created: 2023/08/13 18:22:04 by gtroiano          #+#    #+#             */
+/*   Updated: 2023/08/13 19:04:45 by gtroiano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdlib.h>
-
-int		ft_printf(const char *format, ...);
-int		ft_putchar(char c, int len);
-int		ft_putstr(char *s, int len);
-int		ft_putnbr(int n, int len);
-
-#endif
+int	ft_putnbr(int n, int len)
+{
+	if (n < 0)
+	{
+		if (n == -2147483648)
+		{
+			write(1, "-2147483648", 11);
+			len += 11;
+		}
+		else
+		{
+			ft_putchar(45, len);
+			n = -n;
+		}
+	}
+	else
+	{
+		if (n > 9)
+			ft_putnbr(n / 10, len);
+		ft_putchar((n % 10) + 48, len);
+	}
+	return (len);
+}

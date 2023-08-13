@@ -15,11 +15,8 @@
 int	ft_putstr(char *s, int len)
 {
 	if (!s)
-		s = "(NULL)";
+		s = "(null)";
 	while (*s)
-	{
-		ft_putchar(*s, len);
-		s++;
-	}
+		ft_putchar(*s++, len);
 	return (len);
 }

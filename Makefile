@@ -6,7 +6,7 @@
 #    By: gtroiano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 16:26:03 by gtroiano          #+#    #+#              #
-#    Updated: 2023/08/13 15:57:19 by gtroiano         ###   ########.fr        #
+#    Updated: 2023/08/13 18:36:34 by gtroiano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = libftprintf.a
 SRCS = ft_printf.c \
 	   ft_putchar.c \
 	   ft_putstr.c \
+	   ft_putnbr.c \
 
 OBJS = $(SRCS:.c=.o)
 
