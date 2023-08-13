@@ -6,14 +6,20 @@
 /*   By: gtroiano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:07:31 by gtroiano          #+#    #+#             */
-/*   Updated: 2023/08/10 14:18:23 by gtroiano         ###   ########.fr       */
+/*   Updated: 2023/08/13 17:50:46 by gtroiano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_putstr(char *s, int fd)
+int	ft_putstr(char *s, int len)
 {
 	if (!s)
-		return (write(fd, 	
-}	
+		s = "(NULL)";
+	while (*s)
+	{
+		ft_putchar(*s, len);
+		s++;
+	}
+	return (len);
+}
