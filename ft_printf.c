@@ -6,7 +6,7 @@
 /*   By: gtroiano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:30:48 by gtroiano          #+#    #+#             */
-/*   Updated: 2023/08/13 19:19:41 by gtroiano         ###   ########.fr       */
+/*   Updated: 2023/08/14 13:36:31 by gtroiano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ static void	ft_eval_format(va_list ap, char s, int *len)
 		ft_putstr(va_arg(ap, char *), len);
 	else if (s == 'i' || s == 'd')
 		ft_putnbr(va_arg(ap, int), len);
+	else if (s == 'x' || s == 'X')
+		ft_puthex(va_arg(ap, unsigned int), len, s);
+	else if (s == 'u')
+		ft_putuint(va_arg(ap, unsigned int), len);
 	else if (s == '%')
 		ft_putchar(s, len);
 }

@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putuint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtroiano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 17:42:41 by gtroiano          #+#    #+#             */
-/*   Updated: 2023/08/14 13:33:06 by gtroiano         ###   ########.fr       */
+/*   Created: 2023/08/14 12:06:19 by gtroiano          #+#    #+#             */
+/*   Updated: 2023/08/14 12:21:26 by gtroiano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdlib.h>
-
-int		ft_printf(const char *format, ...);
-void	ft_putchar(char c, int *len);
-void	ft_putstr(char *s, int *len);
-void	ft_putnbr(int n, int *len);
-void	ft_puthex(unsigned int x, int *len, char s);
-void	ft_putuint(unsigned int u, int *len);
-
-#endif
+void	ft_putuint(unsigned int u, int *len)
+{
+	if (u > 9)
+		ft_putuint(u / 10, len);
+	ft_putchar((u % 10) + 48, len);
+}
